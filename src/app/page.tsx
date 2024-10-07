@@ -30,7 +30,7 @@ export default function Home() {
     <div>
       <h1>OLÁ - TELA UM</h1>
       <input type="text" placeholder="Pesquisar..." value={foto} onChange={(e) => setFoto(e.target.value)}/>
-      <div className="flex flex-row wrap flex-wrap text-gray-500">
+      <div className="flex flex-row wrap flex-wrap text-gray-400">
         {data.map((item) => {
           return (
             <div key={item.id} className="flex flex-col w-1/6 h-[300px] justify-end items-center">
@@ -40,6 +40,8 @@ export default function Home() {
           )
         })}
       </div>
+      
     </div>
+
   );
 }
