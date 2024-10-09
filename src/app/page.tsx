@@ -19,7 +19,7 @@ export default function Home() {
   useEffect(() => {
 
     axios.get(`https://jsonplaceholder.typicode.com/photos/${foto}`).then((res) => {
-      console.log(res)
+      console.log(res.data)
       setData(Array.isArray(res.data) ? res.data : [res.data]);
     })
 

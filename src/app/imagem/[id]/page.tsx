@@ -19,7 +19,7 @@ const Img = async ({params: {id}} : {params: {id: string}}) => {
         <>
             <h1>{data.id}</h1>
             <p>{data.title}</p>
-            <Image className="h-auto w-[500px]" src={data.url} alt="sla" width={100} height={100} />
+            <img className="h-auto w-[500px]" src={data.url} alt="sla" width={100} height={100} />
         </>
     )
 }

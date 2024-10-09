@@ -1,7 +1,7 @@
 "use client"
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Image from "next/image";
+// import Image from "next/image";
 
 interface DadosAPI {
     _id: string,
@@ -11,12 +11,12 @@ interface DadosAPI {
 
 const SegundaTela = () => {
     const [dados, setDados] = useState<DadosAPI[]>([]);
+    const [personagem, setPersonagem] = useState("");
 
     useEffect(() => {
-        axios.get("https://api.disneyapi.dev/character").then((res) => {
+        axios.get(`https://api.disneyapi.dev/character?name=${personagem}`).then((res) => {
             console.log(res.data.data);
             setDados(Array.isArray(res.data.data) ? res.data.data : [res.data.data]);
-            // setData(Array.isArray(res.data) ? res.data : [res.data]);
         });
 
         return() => {}
@@ -25,10 +25,11 @@ const SegundaTela = () => {
     return (
         <>
             <h1>DISNEY API</h1>
+            <input type="text" value={personagem} onChange={(e) => setPersonagem(e.target.value)} />
             {dados.map((item, index) => {
                 return (
                     <div key={index}>
-                        <Image src={item.imageUrl} alt="" width={200} height={200}/>
+                        <a href={`/perso/${item._id}`}><img src={item.imageUrl} alt="" width={200} height={200}/></a>
                         <h1>{item.name}</h1>
                         <h2>{item._id}</h2>
                     </div>
